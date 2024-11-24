@@ -697,6 +697,9 @@ bool conectarWifi(){
     imprimeDisplay("Conectando\nWiFi");
     contador += 1;
   }
+
+  display.clearDisplay();
+  display.display();
    
   if (WiFi.status() == WL_CONNECTED){
     Serial.println("\nWi-Fi conectado.");
