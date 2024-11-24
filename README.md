@@ -31,3 +31,7 @@ O acoplador ótico pode funcionar como chave de telegrafia podendo ser utilizado
    - O módulo Wi-Fi será desligado.  
    - O display será desativado.  
    - A transmissão da mensagem será iniciada.
+
+## Contato
+
+Caso haja qualquer dúvida ou se fizer uma montagem utilizando esse projeto, peço que mande um feedback para o seguinte email: py4rdg@gmail.com 
