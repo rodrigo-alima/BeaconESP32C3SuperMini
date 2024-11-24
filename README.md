@@ -3,7 +3,11 @@
 ## Material necessário
 
 1. Microcontrolador ESP32C3 Super Mini
-2. Display OLED 128 x 32 pixels SSD1306
+2. Display OLED 128 x 32 pixels SSD1306 (Caso seja usado um maior deve-se modificar o código para o novo tamanho)
+   ```
+   #define SCREEN_WIDTH 128  // Largura do display (em pixels)
+   #define SCREEN_HEIGHT 32  // Altura do display (em pixels)
+   ```
 3. Módulo gerador de clock si5351 (Caso queira desenvolver a parte de RF)
    
 Substitua o LED na saída no pino 5 (Verifique no seu microcontrolador que a contagem dos pinos é diferente dos circuitos integrados comuns. Quando digo pino 5 é o pino GPIO 5) por um acoplador ótico que funcionará como chave de telegrafia podendo ser utilizado em qualquer radio que possua uma entrada para chave de cw. Nesse caso pode-se retirar do código todas as referências ao si5351 pois o rádio é que fará o papel de transmissor. Veja a pinagem do ESP32C3 Super Mini:
@@ -30,6 +34,7 @@ Substitua o LED na saída no pino 5 (Verifique no seu microcontrolador que a con
    - Configure o **IP** exibido pelo dispositivo.  
    - Use a **porta padrão**: `55000` (que pode ser modificada no software, se necessário).
    - A mensagem deve conter apenar letras (**MAIÚSCULAS**), números, espaços e o caractere /.
+   - A velocidade de transmissão deve ser ajustada mudando-se o valor da constante PONTO que está em 150 milisegundos. Diminuindo o valor aumenta-se a velocidade de transmissão e vice-versa. Altere a linha ``` #define PONTO 150 ``` para o novo valor.
 
 5. **Início da Transmissão**  
    Após o dispositivo receber a mensagem:  
