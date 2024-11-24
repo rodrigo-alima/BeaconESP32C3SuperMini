@@ -1,5 +1,5 @@
 # Modo de Utilização do Beacon
-<iframe width="560" height="315" src="https://www.youtube.com/embed/B6yGFUcupms" frameborder="0" allowfullscreen></iframe>
+https://www.youtube.com/embed/B6yGFUcupms
 
 
 ## Material necessário
