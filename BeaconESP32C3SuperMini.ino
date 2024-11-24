@@ -24,8 +24,7 @@
 #include <WiFiUdp.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include <Fonts/FreeMonoBold12pt7b.h>
-#include <Fonts/FreeMono9pt7b.h>
+#include <Fonts/FreeSerif9pt7b.h>
 #include <si5351.h>
 #include <Preferences.h>
 
@@ -670,6 +669,13 @@ void inicializarVetorDeFuncoes(char *mensagem, func_ptr_t** vetorFuncoes, int ta
     }
 }
 
+void imprimeDisplay(char *mensagem){
+  display.clearDisplay();
+  display.setCursor(0,12);
+  display.println(mensagem);
+  display.display();
+}
+
 // Função que percorre o vetor e chama as funções apontadas pelos ponteiros
 void chamarFuncoes(func_ptr_t* vetorFuncoes, int tamanhoMensagem) {
     for (int i = 0; i < tamanhoMensagem; i++) {
@@ -688,6 +694,7 @@ bool conectarWifi(){
   while (WiFi.status() != WL_CONNECTED && contador < 4) {
     delay(1000);
     Serial.print(".");
+    imprimeDisplay("Conectando\nWiFi");
     contador += 1;
   }
    
@@ -700,15 +707,11 @@ bool conectarWifi(){
     udp.begin(localUdpPort);
     Serial.printf("Servidor UDP iniciado na porta %d\n", localUdpPort);
 
-    // Inicializa o display OLED
-    display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
     display.clearDisplay();
-    display.setFont(&FreeMono9pt7b);
-    display.setTextSize(1); 
-    display.setTextColor(SSD1306_WHITE);
-    display.setCursor(0, 10);
+    display.setCursor(0,12);
     display.println(WiFi.localIP());
     display.display();
+
     return true;
   }
   //Desativando o modulo WiFi
@@ -746,6 +749,7 @@ bool lerMensagemUdp() {
       WiFi.mode(WIFI_OFF);
       Serial.println("Módulo Wifi desativado");
 
+      //Limpa o display
       display.clearDisplay();
       display.display();
       return true;
@@ -793,6 +797,13 @@ bool lerMensagemGravada(const char *chave, char *buffer, size_t bufferSize){
 }
 
 void setup() {
+
+  // Inicializa o display OLED
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  display.clearDisplay();
+  display.setFont(&FreeSerif9pt7b);
+  display.setTextSize(1); 
+  display.setTextColor(SSD1306_WHITE);
 
   //Inicia comunicação serial
   Serial.begin(115200);
