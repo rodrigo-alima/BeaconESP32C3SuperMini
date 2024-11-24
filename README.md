@@ -8,7 +8,7 @@
    
 O acoplador ótico pode funcionar como chave de telegrafia podendo ser utilizado em qualquer radio que possua uma entrada para chave de cw. Nesse caso pode-se retirar do código todas as referências ao si5351 pois o rádio é que fará o papel de transmissor.
 ## Esquema de ligação
-![Esquema de ligação em protoboard](https://github.com/rodrigo-alima/BeaconESP32C3SuperMini/tree/main/BEACON-ESP32SuprMini_bb.jpg)
+![Esquema de ligação em protoboard](BEACON-ESP32SuprMini_bb.jpg)
 
 ## Passo a Passo
 
