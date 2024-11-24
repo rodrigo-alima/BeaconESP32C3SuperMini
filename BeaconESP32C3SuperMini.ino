@@ -80,7 +80,7 @@ bool conectado;
 #define SPACE 600
 
 //Define o pino de saida
-#define SAIDA 2
+#define SAIDA 5
 
 // Tipo de ponteiro para funções que não retornam nada e não recebem argumentos
 typedef void (*func_ptr_t)();
@@ -516,6 +516,16 @@ void func9() {
 
 void funcBar() {
     Serial.println("Função / chamada");
+    traco();
+    delay(ENTRE_SIMBOLOS);
+    ponto();
+    delay(ENTRE_SIMBOLOS);
+    ponto();
+    delay(ENTRE_SIMBOLOS);
+    traco();
+    delay(ENTRE_SIMBOLOS);
+    ponto();
+    delay(ENTRE_LETRAS);
 }
 
 void funcSpace() {
