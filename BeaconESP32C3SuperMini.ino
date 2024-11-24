@@ -49,8 +49,8 @@ Si5351 si5351;
 uint64_t freq_hz = 5000300000; 
 
 // Configurações de rede Wi-Fi
-const char* ssid = "BEACON";       // Substitua pelo nome da sua rede Wi-Fi
-const char* password = "12345678"; // Substitua pela senha da sua rede Wi-Fi
+const char* ssid = "BEACON";       // Substitua caso seja necessário
+const char* password = "12345678"; // Substitua caso seja necessário
 
 // Configurações do servidor UDP
 const unsigned int localUdpPort = 55000; // Porta local para o servidor UDP
@@ -62,13 +62,15 @@ bool mensagemRecebidaFlag = false; // Flag para indicar quando a mensagem foi re
 //Objeto UDP
 WiFiUDP udp; 
 
+//Controle de conexão WiFi
 bool conectado; 
 
+//CONFIGURAÇÃO DO TEMPO DOS PONTOS E TRAÇOS DA TELEGRAFIA
 //Deve-se manter a proporção 
 //Ponto (.): 1 unidade de tempo.
 //Traço (-): 3 unidades de tempo (três vezes mais longo que o ponto).
-//Espaço entre símbolos (dentro da mesma letra): 1 unidade de tempo.
-//Espaço entre letras (dentro da mesma palavra): 3 unidades de tempo.
+//Espaço entre símbolos (dentro da mesma letra): 1 unidade de tempo. ENTRE_SIMBOLOS
+//Espaço entre letras (dentro da mesma palavra): 3 unidades de tempo. ENTRE_LETRAS
 //Espaço entre palavras: 7 unidades de tempo. No entanto deve ser considerado o tempo enter letras 
 //no final de cada letra
 
@@ -85,7 +87,8 @@ bool conectado;
 // Tipo de ponteiro para funções que não retornam nada e não recebem argumentos
 typedef void (*func_ptr_t)();
 
-// Criar um vetor de ponteiros para funções
+// Cria um ponteiro para o vetor de funções que será alocado
+// de acordo com o tamanho da mensagem recebida
 func_ptr_t *vetorFuncoes = NULL;
 
 void ponto(){
@@ -100,7 +103,7 @@ void traco(){
   digitalWrite(SAIDA, LOW);
 }
 
-// Funções que serão chamadas com base nos caracteres
+// Funções que serão chamadas com base nos caracteres da mensagem
 void funcA() {
     Serial.println("Função A chamada");
     ponto();   
@@ -803,7 +806,9 @@ void setup() {
 }
 
 void loop() {
-
+  
+  // Verifica se a conexão foi estabelecida e caso positivo inicia 
+  // o loop de leitura UDP 
   if(conectado == true){
 
     bool result = false;
@@ -814,9 +819,9 @@ void loop() {
    
   }
 
-  //Caso a mensagem tenha sido recebida com sucesso
-  //Inicia o vetor de funções caso contrario inicia com
-  //a mensagem padrao "TEST"
+  // Caso a mensagem tenha sido recebida com sucesso, grava-a na memória e
+  // inicia o vetor de funções caso contrario caso contrário
+  // acessa a memória para pegar a mensagem gravada anteriomente
   if (mensagemRecebidaFlag == true){
     
     //Grava a mensagem na memória
@@ -837,7 +842,7 @@ void loop() {
   }
 
   while(mensagemRecebidaFlag){
-    // Percorrer o vetor e chamar as funções
+    // Percorrer o vetor e chamar as funções infinitamente
     chamarFuncoes(vetorFuncoes, strlen(mensagemRecebida));
     delay(5000);  // Espera 5 segundos antes de chamar as funções novamente
   }
