@@ -1,5 +1,5 @@
 # Modo de Utilização do Beacon
-https://www.youtube.com/embed/B6yGFUcupms
+[Vídeo explicativo](https://www.youtube.com/embed/B6yGFUcupms)
 
 
 ## Material necessário
