@@ -29,6 +29,7 @@ Substitua o LED na saída no pino 5 (Verifique no seu microcontrolador que a con
    Utilize qualquer programa que envie mensagens via **UDP**:  
    - Configure o **IP** exibido pelo dispositivo.  
    - Use a **porta padrão**: `55000` (que pode ser modificada no software, se necessário).
+   - A mensagem deve conter apenar letras (**MAIÚSCULAS**), números, espaços e o caractere /.
 
 5. **Início da Transmissão**  
    Após o dispositivo receber a mensagem:  
