@@ -75,10 +75,10 @@ bool conectado;
 
 //Em milisegundos
 #define PONTO 150
-#define TRACO 450
-#define ENTRE_SIMBOLOS 150
-#define ENTRE_LETRAS 450
-#define SPACE 600
+#define TRACO PONTO * 3
+#define ENTRE_SIMBOLOS PONTO
+#define ENTRE_LETRAS PONTO * 3
+#define SPACE (PONTO * 7) - ENTRE_LETRAS
 
 //Define o pino de saida
 #define SAIDA 5
@@ -807,6 +807,7 @@ void setup() {
   display.setFont(&FreeSerif9pt7b);
   display.setTextSize(1); 
   display.setTextColor(SSD1306_WHITE);
+  display.clearDisplay();
 
   //Inicia comunicação serial
   Serial.begin(115200);
