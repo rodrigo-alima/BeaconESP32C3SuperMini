@@ -6,7 +6,7 @@
 2. Display OLED 128 x 32 pixels SSD1306
 3. Módulo gerador de clock si5351 (Caso queira desenvolver a parte de RF)
    
-Substitua o LED na saída no pino 5 por um acoplador ótico que funcionará como chave de telegrafia podendo ser utilizado em qualquer radio que possua uma entrada para chave de cw. Nesse caso pode-se retirar do código todas as referências ao si5351 pois o rádio é que fará o papel de transmissor.
+Substitua o LED na saída no pino 5 (Verifique no seu microcontrolador que a contagem dos pinos é diferente dos circuitos integrados comuns. Quando digo pino 5 é o pino GPIO 5) por um acoplador ótico que funcionará como chave de telegrafia podendo ser utilizado em qualquer radio que possua uma entrada para chave de cw. Nesse caso pode-se retirar do código todas as referências ao si5351 pois o rádio é que fará o papel de transmissor.
 ## Esquema de ligação
 ![Esquema de ligação em protoboard](BEACON-ESP32SuprMini_bb.jpg)
 
