@@ -742,6 +742,10 @@ bool lerMensagemUdp() {
       udp.stop();
       Serial.println("Servidor udp desativado");
 
+      //Desativando o modulo WiFi
+      WiFi.mode(WIFI_OFF);
+      Serial.println("Módulo Wifi desativado");
+
       display.clearDisplay();
       display.display();
       return true;
