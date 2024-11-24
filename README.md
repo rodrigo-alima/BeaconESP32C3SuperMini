@@ -1,5 +1,13 @@
 # Modo de Utilização do Beacon
 
+## Material necessário
+
+1. Microcontrolador ESP32C3 Super Mini
+2. Display OLED 128 x 32 pixels SSD1306
+3. Módulo gerador de clock si5351 (Caso queira desenvolver a parte de RF)
+   
+O acoplador ótico pode funcionar como chave de telegrafia podendo ser utilizado em qualquer radio que possua uma entrada para chave de cw. Nesse caso pode-se retirar do código todas as referências ao si5351 pois o rádio é que fará o papel de transmissor.
+
 ## Passo a Passo
 
 1. **Transferência do Programa**  
